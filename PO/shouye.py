@@ -48,4 +48,3 @@ if __name__ == '__main__':
     s = shouyePage()
     s.get_loction()
     s.stop()
-    

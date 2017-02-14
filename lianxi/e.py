@@ -65,6 +65,6 @@
 #
 # if __name__ == "__main__":
 #     main()
-from test.test1 import aa
+from lianxi.test1 import aa
 print(aa)
 print(list(map(aa,["a"])))

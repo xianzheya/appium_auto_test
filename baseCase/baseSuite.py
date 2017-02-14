@@ -5,7 +5,7 @@ import test
 import functools
 from unittest.loader import TestLoader
 from baseCase.case import BaseTest
-from server.log import LoggerBase
+
 
 class BaseLoader(TestLoader):
     def loadTestsFromTestCase(self, testCaseClass):
@@ -20,10 +20,11 @@ class BaseLoader(TestLoader):
     def loadTestsFromModule(self, module, *args, pattern=None, **kws):
         dir_name = os.listdir(os.path.dirname(module.__file__))
         tests1 = [n[:-3] for n in dir_name if n.lower().startswith("test")]
-        [ __import__("".join([str(module.__package__),'.',i]), fromlist=True) for i in tests1]
-        itests = self.suiteClass(map(self.loadTestsFromTestCase,BaseTest.__subclasses__()))
-        # print(BaseTest.__subclasses__())
+        [__import__("".join([str(module.__package__), '.', i]), fromlist=True) for i in tests1]
+        itests = self.suiteClass(map(self.loadTestsFromTestCase, BaseTest.__subclasses__()))
         return itests
+
+baseLoder = BaseLoader()
 
 if __name__ == "__main__":
     b = BaseLoader()

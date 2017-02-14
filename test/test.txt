@@ -1,0 +1,18 @@
+2017-01-24 16:00:50,451 - myLogger - INFO-this is INFO
+2017-01-24 16:01:09,303 - myLogger - INFO-this is INFO
+2017-01-24 16:32:50,078 - myLogger - INFO-this is INFO
+2017-01-24 16:54:32,776 - myLogger - INFO-this is INFO
+2017-01-24 17:01:24,230 - myLogger - INFO-this is INFO
+2017-01-24 17:01:26,924 - myLogger - INFO-this is INFO
+2017-01-24 17:04:02,343 - myLogger - INFO-this is INFO
+2017-01-24 17:04:02,344 - myLogger - INFO-xz
+2017-01-24 17:04:57,411 - myLogger - INFO-this is INFO
+2017-01-24 17:04:57,411 - myLogger - INFO-xz
+2017-01-24 17:05:05,026 - myLogger - INFO-this is INFO
+2017-01-24 17:05:05,027 - myLogger - INFO-xz
+2017-01-24 17:05:10,197 - myLogger - INFO-this is INFO
+2017-01-24 17:05:10,197 - myLogger - INFO-xz123
+2017-01-24 17:40:23,003 - myLogger - INFO-this is INFO
+2017-01-24 17:40:23,003 - myLogger - INFO-xz123
+2017-01-24 17:40:43,700 - myLogger - INFO-this is INFO
+2017-01-24 17:40:43,700 - myLogger - INFO-xz123

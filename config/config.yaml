@@ -1,0 +1,8 @@
+# adb 位路径置
+adb: d:\adb
+# aapt 路径位置
+aapt: D:\adb
+
+  -1
+  -2
+  -3

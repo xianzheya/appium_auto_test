@@ -6,6 +6,7 @@ from mode.ApkModel import ApkModel
 import subprocess
 from mode.ConfigModel import ConfigModel as conf
 
+
 class ApkBase(object):
     def __init__(self):
         self.p = conf
@@ -36,25 +37,26 @@ class ApkBase(object):
         if self.p.apk_path != '':
             if os.path.splitext(self.p.apk_path)[1] != ".apk":
                 raise ValueError("please write correct apk path")
-            elif not os.path.exists(self.p.apk_path) :
+            elif not os.path.exists(self.p.apk_path):
                 raise FileExistsError(self.p.apk_path + " is not exists")
             return self.p.apk_path
-        else :
-            pa = os.path.normpath(os.path.abspath(os.pardir)+"/app")
-            app_list= os.listdir(pa)
+        else:
+            pa = os.path.normcase(os.path.dirname(os.path.normpath(os.path.split(os.path.abspath(__file__))[0]))+"/app")
+            app_list = os.listdir(pa)
             for i in app_list:
                 if os.path.splitext(i)[1] == ".apk":
-                    paf = os.path.join(pa,i)
+                    paf = os.path.join(pa, i)
                     return paf
                 else:
                     raise FileExistsError("This app folder not exists apk")
+
     @property
     def apk(self):
         if hasattr(conf, "package") and hasattr(conf, "activity"):
-            a = self.__get_activity(1)
+            a_path = self.__get_activity(1)
         else:
-            a = self.__get_activity(2)
-        return a
+            a_path = self.__get_activity(2)
+        return a_path
 if __name__ == '__main__':
     ap = ApkBase()
     a = ap.apk

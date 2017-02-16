@@ -43,7 +43,7 @@ class BaseResult(TestResult):
         super(BaseResult, self).addError(test, err)
         if self.showAll:
             self.stream.writeln("ERROR")
-            self.log.info("测试执行第 {} 条执行失败".format(self.testsRun))
+            self.log.info("测试执行第 {} 条执行错误".format(self.testsRun))
         elif self.dots:
             self.stream.write('E')
             self.stream.flush()
@@ -52,6 +52,7 @@ class BaseResult(TestResult):
         super(BaseResult, self).addFailure(test, err)
         if self.showAll:
             self.stream.writeln("FAIL")
+            self.log.info("测试执行第 {} 条执行失败".format(self.testsRun))
         elif self.dots:
             self.stream.write('F')
             self.stream.flush()
@@ -60,6 +61,7 @@ class BaseResult(TestResult):
         super(BaseResult, self).addSkip(test, reason)
         if self.showAll:
             self.stream.writeln("skipped {0!r}".format(reason))
+            self.log.info("测试执行第 {} 条执行跳过".format(self.testsRun))
         elif self.dots:
             self.stream.write("s")
             self.stream.flush()
@@ -68,6 +70,7 @@ class BaseResult(TestResult):
         super(BaseResult, self).addExpectedFailure(test, err)
         if self.showAll:
             self.stream.writeln("expected failure")
+            self.log.info("测试执行第 {} 条执行异常失败".format(self.testsRun))
         elif self.dots:
             self.stream.write("x")
             self.stream.flush()

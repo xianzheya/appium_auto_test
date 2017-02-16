@@ -12,7 +12,6 @@ class Action(object):
         s_size = s.size
         s_location = s.location
         s_window = self.driver.get_window_size()
-        print(s_size["height"], s_location["y"], s_window["height"])
         if s_size["height"] + s_location["y"] == s_window["height"]:
             self.x = s_size["width"]
             self.start_y = s_location["y"]
@@ -86,6 +85,7 @@ class Action(object):
 
     def huadong_zuo(self):
         self.driver.find_element_by_id("com.mqunar.atom.alexhome:id/atom_alexhome_search_layout").get_attribute("text")
+
     def huadong_you(self):
         pass
 
@@ -104,11 +104,11 @@ if __name__ == "__main__":
     # print(Action.__dict__)
     try:
         for i in range(1):
-            a.swipe_up_two
+            a.swipe_up_one
             print("up")
-            e = a.driver.find_elements_by_id("com.mqunar.atom.alexhome:id/atom_alexhome_small_entrance_card")
-            print(len(e))
-            print(e)
+            # e = a.driver.find_elements_by_id("com.mqunar.atom.alexhome:id/atom_alexhome_small_entrance_card")
+            # print(len(e))
+            # print(e)
             # print(e.size,e.location)
             # f = e.find_elements_by_class_name("android.widget.LinearLayout")
             # print(len(f))

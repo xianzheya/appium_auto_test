@@ -6,6 +6,9 @@ from server.log import LoggerBase
 
 
 class BaseResult(TestResult):
+    separator1 = '=' * 70
+    separator2 = '-' * 70
+
     def __init__(self, stream, descriptions, verbosity):
         super(BaseResult, self).__init__(stream, descriptions, verbosity)
         self.stream = stream
@@ -22,6 +25,8 @@ class BaseResult(TestResult):
             return str(test)
 
     def startTest(self, test):
+        print()
+        self.wei_zi(test)
         super(BaseResult, self).startTest(test)
         if self.showAll:
             self.stream.write(self.getDescription(test))
@@ -31,7 +36,7 @@ class BaseResult(TestResult):
             self.log.info("测试开始执行第 {} 条......".format(self.testsRun))
 
     def addSuccess(self, test):
-        super(BaseResult, self).addSuccess(test)
+        # super(BaseResult, self).addSuccess(test)
         if self.showAll:
             self.stream.writeln("ok")
             self.log.info("测试执行第 {} 条执行成功".format(self.testsRun))
@@ -91,11 +96,18 @@ class BaseResult(TestResult):
 
     def printErrorList(self, flavour, errors):
         for test, err in errors:
+            # err 是错误信息
             self.stream.writeln(self.separator1)
-            self.stream.writeln("%s: %s" % (flavour,self.getDescription(test)))
+            self.stream.writeln("%s: %s" % (flavour, self.getDescription(test)))
             self.stream.writeln(self.separator2)
             self.stream.writeln("%s" % err)
 
+    def wei_zi(self, test):
+        mo, al = str(test).split()
+        fo, fi, cls = str(al[1:-1]).split(".")
+        self.log.info("在执行 {fi}.py 文件中的 {cls} 类下的 {mo} 方法。".format(fi=fi, cls=cls, mo=mo))
+        if test.__dict__["_testMethodDoc"]:
+            self.log.info("测试内容：{}".format(test.__dict__["_testMethodDoc"]))
 
 
 class BaseRunner(TextTestRunner):

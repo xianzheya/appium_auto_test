@@ -1,12 +1,13 @@
-#-*- coding:utf-8 -*-
+# -*- coding:utf-8 -*-
 
 import unittest
-from server.appium_server import AndroidServer
+from server.appium_server import appiumDriver
+
 
 class BaseTest(unittest.TestCase):
-    def setUp(self):
-        pass
-        # self.driver = AndroidServer().appium_driver
-    def tearDown(self):
-        pass
-        # self.driver.close()
+    pass
+    # def setUpClass(cls):
+    #     cls.driver = appiumDriver.appium_driver
+    #
+    # def tearDownClass(cls):
+    #     cls.driver.close()

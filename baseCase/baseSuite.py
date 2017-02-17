@@ -9,9 +9,10 @@ from baseCase.case import BaseTest
 
 class BaseLoader(TestLoader):
     def loadTestsFromTestCase(self, testCaseClass):
-        def isTestMethod(arr,testClass=testCaseClass):
-            return arr[:4].lower().startswith('test') and callable(getattr(testClass,arr)) or arr == "runTest" and callable(getattr(testClass,arr))
-        testFnNames = list(filter(isTestMethod,dir(testCaseClass)))
+        def isTestMethod(arr, testClass=testCaseClass):
+            return arr[:4].lower().startswith('test') and callable(
+                getattr(testClass, arr)) or arr == "runTest" and callable(getattr(testClass, arr))
+        testFnNames = list(filter(isTestMethod, dir(testCaseClass)))
         if self.sortTestMethodsUsing:
             testFnNames.sort(key=functools.cmp_to_key(self.sortTestMethodsUsing))
         loaded_suite = self.suiteClass(map(testCaseClass, testFnNames))

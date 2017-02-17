@@ -14,7 +14,7 @@ def get_level(le=None):
             le = int(le)
         except:
             if le.upper() in logging._nameToLevel.keys():
-                return getattr(logging,le.upper())
+                return getattr(logging, le.upper())
             else:
                 raise KeyError("please input ('CRITICAL:50','ERROR':40,'WARN','WARNING':30,'INFO':20,'DEBUG':10)")
     if isinstance(le, int):
@@ -34,7 +34,6 @@ class LoggerBase(object):
 
     def __init__(self, logger_name="", file_name=None, level=None):
         if not self.__dict__:
-            #print(self)
             self.loggername = logger_name
             self.fielname = file_name
             self.level = get_level(level)
@@ -43,18 +42,16 @@ class LoggerBase(object):
             formater = logging.Formatter(fmt="[ %(asctime)s ] %(name)s - %(levelname)s : %(message)s",datefmt="%Y-%m-%d %H:%M:%S")
             if self.fielname is not None:
                 fs = logging.FileHandler(self.filename)
-                # fs.setLevel(self.level)
                 fs.setFormatter(formater)
                 self.logger.addHandler(fs)
-            #cs = logging.StreamHandler(sys.stdout)
-            ## cs.setLevel(self.level)
-            #cs.setFormatter(formater)
-            #self.logger.addHandler(cs)
+            cs = logging.StreamHandler(sys.stdout)
+            cs.setFormatter(formater)
+            self.logger.addHandler(cs)
         else:
             self.level = get_level(level)
             self.logger.setLevel(self.level)
 
-    def info(self,mes=None):
+    def info(self, mes=None):
         if mes is None:
             raise ValueError("mes not is None")
         if self.level == 50:

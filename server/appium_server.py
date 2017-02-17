@@ -108,6 +108,8 @@ class AndroidServer(AndroidSingle):
     def __update_close(self,dr):
         if drwa(dr,"com.mqunar.atom.attemper:id/atom_atte_btn_download",25):
             dr.find_element_by_id("com.mqunar.atom.attemper:id/atom_atte_iv_close").click()
+
+
 class ServerRun(Process):
     def __init__(self):
         super(ServerRun, self).__init__()
